@@ -22,6 +22,11 @@ const router = new Router({
             component: ()=> import("./components/Login")
         },
         {
+            path: "/Logout",
+            name:"Logout",
+            component: ()=> import("./components/Logout")
+        },
+        {
             path:"/user",
             name:"User",
             component: ()=> import("./components/User")

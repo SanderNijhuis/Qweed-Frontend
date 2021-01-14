@@ -13,7 +13,12 @@ const LocalStorageService = (function () {
     }
 
     function getUser() {
-        return localStorage.getItem('userId');
+        try {
+            return localStorage.getItem('userId');
+        }catch (e){
+            console.log(e);
+        }
+
     }
     function clearUser() {
         localStorage.removeItem('userId');

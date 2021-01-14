@@ -23,7 +23,7 @@
             <em></em>
           </template>
           <b-dropdown-item href="#">Mijn profiel</b-dropdown-item>
-          <b-dropdown-item href="#">Uitloggen</b-dropdown-item>
+          <b-dropdown-item href="/Logout">Uitloggen</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>

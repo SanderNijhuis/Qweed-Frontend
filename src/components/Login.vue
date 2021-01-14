@@ -7,17 +7,15 @@
         <div class="alert alert-warning" v-bind:key="index" v-for="(error, index) in errors">{{error}}</div>
       </div>
       <fieldset class="form-group">
-        <label>E-mail
-        <input type="text" class="form-control" v-model="username">
-        </label>
+        <label class="b-form-btn-label-control"  for="username">Gebruikersnaam</label>
+        <input type="text" class="form-control" id="username" v-model="username">
       </fieldset>
       <fieldset class="form-group">
-        <label>Password
-        <input type="password" class="form-control" v-model="password">
-        </label>
+        <label for="password">Password </label>
+        <input type="password" class="form-control" id="password" v-model="password">
       </fieldset>
-      <button v-on:click="accept" class="btn btn-success mt-3" type="submit">Inloggen</button>
-      <button v-on:click="register" class="btn btn-success mt-3" type="submit">Account aanmaken </button>
+      <button v-on:click="accept" class="btn btn-primary" type="submit">Inloggen</button>
+      <button v-on:click="register" class="btn btn-primary" type="submit">Account aanmaken </button>
     </b-form>
   </div>
 </div>
@@ -93,6 +91,6 @@ export default {
 </script>
 <style lang="css">
 button{
-  margin-right:1.5em;
+  margin: 5px;
 }
 </style>
