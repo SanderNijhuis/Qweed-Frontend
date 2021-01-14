@@ -1,28 +1,27 @@
 <template>
-<div>
-
-    <div class="container">
-        <form class="mx-auto" style="width: 400px" @submit="validateAndSubmit">
-          <h3>Register</h3>
-            <div v-if="errors.length">
-                <div class="alert alert-warning" v-bind:key="index" v-for="(error, index) in errors">{{error}}</div>
-            </div>
-            <fieldset class="form-group">
-                <label>Gebruikersnaam</label>
-                <input type="text" class="form-control" v-model="username">
-            </fieldset>
-            <fieldset class="form-group">
-              <label>Wachtwoord</label>
-              <input type="password" class="form-control" v-model="password">
-            </fieldset>
-            <fieldset class="form-group">
-              <label>Gebruikersnaam</label>
-              <input type="text" class="form-control" v-model="username">
-            </fieldset>
-            <button v-on:click="accept" class="btn btn-success mt-3" type="submit">Registreren</button>
-        </form>
-      </div>
+  <div>
+    <div class="d-flex justify-content-center align-items-center container p-3" >
+      <b-form class="card p-3 bg-light col-md-5" @submit="validateAndSubmit">
+        <h3>Registreren</h3>
+        <div v-if="errors.length">
+          <div class="alert alert-warning" v-bind:key="index" v-for="(error, index) in errors">{{error}}</div>
+        </div>
+        <fieldset class="form-group">
+          <label for="username">Gebruikersnaam</label>
+          <input type="text" class="form-control" id="username" v-model="username">
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="password" >Wachtwoord</label>
+          <input type="password" class="form-control" id="password" v-model="password">
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="motivation">Motivatie</label>
+          <input type="text" class="form-control" id="motivation" v-model="motivation">
+        </fieldset>
+        <button v-on:click="accept" class="btn btn-primary" type="submit">Registreren</button>
+      </b-form>
     </div>
+  </div>
 </template>
 
 <script>
