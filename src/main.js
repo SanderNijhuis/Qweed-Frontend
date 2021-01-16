@@ -8,6 +8,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@/assets/css/main.css'
+import VueNumericInput from 'vue-numeric-input';
+
+Vue.use(VueNumericInput)
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)

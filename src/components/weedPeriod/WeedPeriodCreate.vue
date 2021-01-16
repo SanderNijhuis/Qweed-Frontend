@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>Create</h1>
+    <h1 style="margin-left: -25px;">Create</h1>
 
-    <h4>Wiet periode</h4>
+    <h4 style="margin-left: -25px;">Wiet periode</h4>
     <hr />
     <div class="row d-flex justify-content-center align-items-center container">
       <div class="col-md-4">
@@ -11,7 +11,7 @@
             <div class="alert alert-warning" v-bind:key="index" v-for="(error, index) in errors">{{error}}</div>
           </div>
           <fieldset class="form-group">
-            <label class="b-form-btn-label-control"  for="name">Gebruikersnaam</label>
+            <label class="b-form-btn-label-control"  for="name">Naam</label>
             <input type="text" class="form-control" id="name" v-model="name">
           </fieldset>
           <fieldset class="form-group">
@@ -20,11 +20,13 @@
           </fieldset>
           <fieldset class="form-group">
             <label class="b-form-btn-label-control"  for="averageGramPerJoint">Gemiddelde hoeveelheid gram per joint</label>
-            <input type="number" class="form-control" id="averageGramPerJoint" v-model.number="averageGramPerJoint">
+            <!--<input type="number" class="form-control" id="averageGramPerJoint" v-model.number="averageGramPerJoint"> -->
+            <vue-numeric-input id="averageGramPerJoint" v-model="averageGramPerJoint" :min="0.1" :max="5" :step="0.1" size="100%" :precision="1" align="center" placeholder="0.1"></vue-numeric-input>
           </fieldset>
           <fieldset class="form-group">
             <label class="b-form-btn-label-control"  for="costPerGram">Kosten per gram in euro's</label>
-            <input type="number" class="form-control" id="costPerGram" v-model.number="costPerGram">
+            <!-- <input type="number" class="form-control" id="costPerGram" v-model.number="costPerGram"> -->
+            <vue-numeric-input id="costPerGram" v-model.number="costPerGram" :min="1" :max="50" :step="1" size="100%" :precision="2" align="center" placeholder="1"></vue-numeric-input>
           </fieldset>
           <div class="form-group">
             <button v-on:click="accept" class="btn btn-primary" type="submit">Toevoegen </button>
