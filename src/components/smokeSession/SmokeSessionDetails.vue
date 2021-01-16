@@ -1,51 +1,40 @@
 <template>
   <div>
     <h1>Details</h1>
-    <h4>SmokeSession</h4>
-    <hr />
-    @*<dl class="row">
-    <dt class = "col-sm-2">
-      @Html.DisplayNameFor(model => model.ID)
-    </dt>
-    <dd class = "col-sm-10">
-      @Html.DisplayFor(model => model.ID)
-    </dd>
-    <dt class = "col-sm-2">
-      @Html.DisplayNameFor(model => model.WeedPeriodID)
-    </dt>
-    <dd class = "col-sm-10">
-      @Html.DisplayFor(model => model.WeedPeriodID)
-    </dd>
-    <dt class = "col-sm-2">
-      @Html.DisplayNameFor(model => model.Name)
-    </dt>
-    <dd class = "col-sm-10">
-      @Html.DisplayFor(model => model.Name)
-    </dd>
-    <dt class = "col-sm-2">
-      @Html.DisplayNameFor(model => model.DateTime)
-    </dt>
-    <dd class = "col-sm-10">
-      @Html.DisplayFor(model => model.DateTime)
-    </dd>
-    <dt class = "col-sm-2">
-      @Html.DisplayNameFor(model => model.JointsSmoked)
-    </dt>
-    <dd class = "col-sm-10">
-      @Html.DisplayFor(model => model.JointsSmoked)
-    </dd>
-  </dl>*@
+    <div id="UserPage"  v-if="isLoaded">
+      <h1>  Wietrook sessie: </h1>
 
-    <p class="text-danger">@TempData["msg"]</p>
+      <div v-if="errors.length">
+        <div class="alert alert-warning" v-bind:key="index" v-for="(error, index) in errors">{{error}}</div>
+      </div>
+
+      <label class="b-form-btn-label-control"  for="name">Naam</label>
+      <span id="name" v-if="SmokeSession.name">{{SmokeSession.name}}</span>
+      <span v-else>Naam kan momenteel niet worden opgehaald.</span>
+
+      <label class="b-form-btn-label-control"  for="startDate">Start datum</label>
+      <span id="startDate" v-if="SmokeSession.startDate">{{SmokeSession.startDate}}</span>
+      <span v-else>Start datum kan momenteel niet worden opgehaald.</span>
+
+      <label class="b-form-btn-label-control"  for="jointsSmoked">Aantal joints</label>
+      <span id="jointsSmoked" v-if="SmokeSession.jointsSmoked">{{SmokeSession.jointsSmoked}}</span>
+      <span v-else>Aantal joints kan momenteel niet worden opgehaald.</span>
+
+      <label class="b-form-btn-label-control"  for="duration">Tijd in minuten</label>
+      <span id="duration" v-if="SmokeSession.duration">{{SmokeSession.duration}}</span>
+      <span v-else>Tijd in minuten kan momenteel niet worden opgehaald.</span>
+    </div>
+    <hr/>
+
     <div class="list-group-item  flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">@Model.Name</h5>
-        <small>@Model.DateTime.ToString("dd/MM/yyyy")</small>
+        <h5 class="mb-1">{{SmokeSession.name}}</h5>
+        <small>{{SmokeSession.startDate}}</small>
       </div>
       <hr />
-      <h6 class="mb-1">Joints smoked: @Model.JointsSmoked </h6>
+      <h6 class="mb-1">Joints smoked: {{SmokeSession.jointsSmoked}} </h6>
       <div class="d-flex w-100 justify-content-between">
-        <button v-on:click="register" class="btn btn-primary" type="submit">Account aanmaken </button>
+        <button v-on:click="deleteSmokeSession" class="btn btn-primary" type="submit">Account aanmaken </button>
       </div>
     </div>
   </div>
@@ -53,8 +42,21 @@
 
 <script>
 export default {
-name: "SmokeSessionDetails"
+name: "SmokeSessionDetails",
+  data(){
+    return{
+      SmokeSession: null,
+      errors: [],
+    }
+  },
+  methods: {
+    deleteSmokeSession() {
+      //TODO delete
+    },
+
+  }
 }
+
 </script>
 
 <style scoped>

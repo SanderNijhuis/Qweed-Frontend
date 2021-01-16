@@ -1,12 +1,13 @@
 <template>
 <div id="UserPage"  v-if="isLoaded">
   <h1>  Profiel: </h1>
-    
- Gebruikersnaam:  <span v-if="User">{{User.username}}</span>
+
+  <label class="b-form-btn-label-control"  for="name">Gebruikersnaam</label>
+  <span id="name" v-if="User.username">{{User.username}}</span>
    <span v-else>gebruikernaam kan momenteel niet worden opgehaald.</span>
-   
-      
- Motivatie:  <span v-if="User">{{User.motivation}}</span>
+
+  <label class="b-form-btn-label-control"  for="motivation">Motivatie</label>
+  <span id="motivation" v-if="User.motivation">{{User.motivation}}</span>
    <span v-else>Motivatie kan momenteel niet worden opgehaald.</span>
     </div>
 </template>

@@ -33,8 +33,13 @@ const router = new Router({
         },
         {
             path:"/SmokeSession/:id",
-            name:"User",
+            name:"SmokeSessionDetails",
             component: ()=> import("./components/smokeSession/SmokeSessionDetails")
+        },
+        {
+            path:"/WeedPeriod/",
+            name:"WeedPeriodCreate",
+            component: ()=> import("./components/weedPeriod/WeedPeriodCreate")
         }
     ]
 });
