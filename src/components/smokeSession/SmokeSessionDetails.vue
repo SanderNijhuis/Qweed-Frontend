@@ -7,7 +7,7 @@
         <div class="alert alert-warning" v-bind:key="index" v-for="(error, index) in errors">{{error}}</div>
       </div>
 
-      <div class="d-flex w-75 justify-content-between">
+      <!--<div class="d-flex w-75 justify-content-between">
         <label class="b-form-btn-label-control" >Naam: </label>
         <span id="name" v-if="SmokeSession.name">{{SmokeSession.name}}</span>
         <div v-else>Naam kan momenteel niet worden opgehaald.</div>
@@ -28,7 +28,7 @@
         <label class="b-form-btn-label-control"  for="duration">Tijd:</label>
         <span id="duration" v-if="SmokeSession.duration">{{SmokeSession.duration}} minuten</span>
         <span v-else>Tijd in minuten kan momenteel niet worden opgehaald.</span>
-      </div>
+      </div>-->
     </div>
     <hr/>
 
@@ -75,7 +75,6 @@ name: "SmokeSessionDetails",
 <style scoped>
 #UserPage{
   text-align: left;
-  margin-left: 25%;
 }
 label{
   margin-right: 5px;

@@ -6,7 +6,7 @@
       <div v-if="errors.length">
         <div class="alert alert-warning" v-bind:key="index" v-for="(error, index) in errors">{{error}}</div>
       </div>
-      <div class="d-flex w-75 justify-content-between">
+      <!-- <div class="d-flex w-75 justify-content-between">
         <label class="b-form-btn-label-control" >Naam: </label>
         <span id="name" v-if="WeedPeriod.name">{{WeedPeriod.name}}</span>
         <div v-else>Naam kan momenteel niet worden opgehaald.</div>
@@ -46,7 +46,7 @@
         <label class="b-form-btn-label-control"  for="averageDuration">Gemiddelde tijd per week:</label>
         <span id="averageDuration" v-if="WeedPeriod.averageDuration">{{WeedPeriod.averageDuration}} minuten</span>
         <span v-else>Gemiddelde tijd per week kan momenteel niet worden opgehaald.</span>
-      </div>
+      </div> -->
     </div>
     <hr/>
 
@@ -102,7 +102,6 @@ export default {
 <style scoped>
 #UserPage{
   text-align: left;
-  margin-left: 25%;
 }
 label{
   margin-right: 5px;
