@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import UserDataService from "../services/UserDataService";
+import UserDataService from "../../services/UserDataService";
 
 
 export default {

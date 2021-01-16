@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import UserDataService from "../services/UserDataService";
-import LocalStorageService from "../services/LocalStorageService";
+import UserDataService from "../../services/UserDataService";
+import LocalStorageService from "../../services/LocalStorageService";
 
 export default {
     name:"User",

@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import UserDataService from "../services/UserDataService";
-import LocalStorageService from "../services/LocalStorageService";
+import UserDataService from "../../services/UserDataService";
+import LocalStorageService from "../../services/LocalStorageService";
 
 export default {
     name: "Login",
@@ -55,7 +55,7 @@ export default {
                   }).then(response => { 
                     // eslint-disable-next-line no-console
                     console.warn(response);
-                    console.log("User: " + response.data)
+                    console.log("user: " + response.data)
                     const user = response.data;
                     LocalStorageService.setUser(user.id)
                     this.$router.push('/user');
