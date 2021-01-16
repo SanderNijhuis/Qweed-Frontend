@@ -1,8 +1,7 @@
 <template>
   <div>
-    <h1>Details</h1>
     <div id="UserPage" >
-      <h4>  Wietrook periode: </h4>
+      <h4> Wietrook periode: </h4>
 
       <div v-if="errors.length">
         <div class="alert alert-warning" v-bind:key="index" v-for="(error, index) in errors">{{error}}</div>
