@@ -40,12 +40,13 @@
       <hr />
       <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Aantal joints:</span><span>{{SmokeSession.jointsSmoked}} joints</span> </h6>
       <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Tijd in minuten:</span><span> {{SmokeSession.duration}} minuten</span> </h6>
+    </div>
+    <br>
       <div class="d-flex w-100 justify-content-between">
         <span></span>
         <button v-on:click="deleteSmokeSession" class="btn btn-danger" type="submit">Delete </button>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
