@@ -11,6 +11,13 @@ import '@/assets/css/main.css'
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
+
+const moment = require('moment')
+moment.locale('nl')
+
+Vue.use(require('vue-moment'), {
+  moment
+})
 new Vue({
   router,
   render: h => h(App),

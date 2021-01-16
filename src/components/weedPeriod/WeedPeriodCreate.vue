@@ -4,7 +4,7 @@
 
     <h4>Wiet periode</h4>
     <hr />
-    <div class="row">
+    <div class="row d-flex justify-content-center align-items-center container">
       <div class="col-md-4">
         <b-form @submit="validateAndSubmit">
           <div v-if="errors.length">
@@ -20,11 +20,11 @@
           </fieldset>
           <fieldset class="form-group">
             <label class="b-form-btn-label-control"  for="averageGramPerJoint">Gemiddelde hoeveelheid gram per joint</label>
-            <input type="text" class="form-control" id="averageGramPerJoint" v-model.number="averageGramPerJoint">
+            <input type="number" class="form-control" id="averageGramPerJoint" v-model.number="averageGramPerJoint">
           </fieldset>
           <fieldset class="form-group">
             <label class="b-form-btn-label-control"  for="costPerGram">Kosten per gram in euro's</label>
-            <input type="text" class="form-control" id="costPerGram" v-model.number="costPerGram">
+            <input type="number" class="form-control" id="costPerGram" v-model.number="costPerGram">
           </fieldset>
           <div class="form-group">
             <button v-on:click="accept" class="btn btn-primary" type="submit">Toevoegen </button>

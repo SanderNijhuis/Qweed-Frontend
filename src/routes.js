@@ -40,7 +40,12 @@ const router = new Router({
             path:"/WeedPeriod/",
             name:"WeedPeriodCreate",
             component: ()=> import("./components/weedPeriod/WeedPeriodCreate")
-        }
+        },
+        {
+            path:"/WeedPeriod/:id",
+            name:"WeedPeriodDetails",
+            component: ()=> import("./components/weedPeriod/WeedPeriodDetails")
+        },
     ]
 });
 
