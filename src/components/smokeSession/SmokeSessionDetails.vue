@@ -6,29 +6,6 @@
       <div v-if="errors.length">
         <div class="alert alert-warning" v-bind:key="index" v-for="(error, index) in errors">{{error}}</div>
       </div>
-
-      <!--<div class="d-flex w-75 justify-content-between">
-        <label class="b-form-btn-label-control" >Naam: </label>
-        <span id="name" v-if="SmokeSession.name">{{SmokeSession.name}}</span>
-        <div v-else>Naam kan momenteel niet worden opgehaald.</div>
-      </div>
-      <div class="d-flex w-75 justify-content-between">
-        <label class="b-form-btn-label-control"  >Start datum: </label>
-        <span id="startDate" v-if="SmokeSession.startDate">{{SmokeSession.startDate | moment('LL')}}</span>
-        <span v-else>Start datum kan momenteel niet worden opgehaald.</span>
-      </div>
-
-      <div class="d-flex w-75 justify-content-between">
-        <label class="b-form-btn-label-control"  for="jointsSmoked">Aantal joints:</label>
-        <span id="jointsSmoked" v-if="SmokeSession.jointsSmoked">{{SmokeSession.jointsSmoked}} joints</span>
-        <span v-else>Aantal joints kan momenteel niet worden opgehaald.</span>
-      </div>
-
-      <div class="d-flex w-75 justify-content-between">
-        <label class="b-form-btn-label-control"  for="duration">Tijd:</label>
-        <span id="duration" v-if="SmokeSession.duration">{{SmokeSession.duration}} minuten</span>
-        <span v-else>Tijd in minuten kan momenteel niet worden opgehaald.</span>
-      </div>-->
     </div>
     <hr/>
 

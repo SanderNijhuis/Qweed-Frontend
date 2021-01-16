@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="UserPage" >
-      <h4> Wietrook periode: </h4>
+      <h4> Wietrook periode</h4>
 
       <div v-if="errors.length">
         <div class="alert alert-warning" v-bind:key="index" v-for="(error, index) in errors">{{error}}</div>
@@ -49,22 +49,6 @@
       </div> -->
     </div>
     <hr/>
-
-   <!-- <div class="list-group-item  flex-column align-items-start">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{WeedPeriod.name}}</h5>
-        <small>{{WeedPeriod.startDate| moment('LL')}}</small>
-        <small>{{WeedPeriod.endDate| moment('LL')}}</small>
-      </div>
-      <hr />
-      <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Gemiddelde hoeveelheid joints per week:</span> <span>{{WeedPeriod.averageJointsSmoked}} joints </span> </h6>
-      <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Gemiddelde kosten per week:</span><span>{{WeedPeriod.averageCostPerWeek}} euro </span> </h6>
-      <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Gemiddelde hoeveelheid tijd per week:</span><span>{{WeedPeriod.averageDuration}} minuten </span> </h6>
-      <div class="d-flex w-100 justify-content-between">
-        <span></span>
-        <button v-on:click="deleteWeedPeriod" class="btn btn-danger" type="submit">Delete </button>
-      </div>
-    </div> -->
     <div class="list-group-item  flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{WeedPeriod.name}}</h5>
@@ -93,10 +77,34 @@
     <div>
       <div class="d-flex w-100 justify-content-between">
         <a v-on:click="overview" class="" type="submit">Terug naar overzicht</a>
-        <button v-on:click="deleteWeedPeriod" class="btn btn-danger" type="submit">Delete</button>
+        <button v-on:click="deleteWeedPeriod" class="btn btn-danger" type="submit">Verwijderen</button>
       </div>
     </div>
-    
+
+    <br />
+    <div class="d-flex w-100 justify-content-between">
+      <h4>Wietrook sessies</h4>
+    </div>
+    <button v-on:click="addSmokeSession(WeedPeriod.id)" class="btn btn-success" type="submit">Wietrook sessie toevoegen</button>
+    <hr />
+    <div class="container">
+      <div class="list-group">
+        <div v-for="smokeSession in WeedPeriod.smokeSessions" v-bind:key="smokeSession.id">
+        <a  v-on:click="detailsSmokeSession(smokeSession.id)" class="list-group-item list-group-item-action flex-column align-items-start">{{ smokeSession.name }}
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{smokeSession.name}}</h5>
+            <small>{{smokeSession.startDate| moment('LL')}}</small>
+          </div>
+          <hr />
+          <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Aantal joints:</span><span>{{smokeSession.jointsSmoked}} joints</span> </h6>
+          <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Tijd in minuten:</span><span> {{smokeSession.duration}} minuten</span> </h6>
+        </a>
+        <br/>
+        </div>
+
+      </div>
+
+    </div>
   </div>
 </template>
 
@@ -106,6 +114,7 @@ export default {
   data(){
     return{
       WeedPeriod: {
+        id: 1,
         name:"basic weed periode",
         startDate: new Date(),
         endDate: new Date(),
@@ -119,12 +128,14 @@ export default {
         totalTime:0,
         isInitial: false,
         smokeSessions: [{
+          id:1,
           name:"gezellig met vrienden",
           startDate: new Date(),
           jointsSmoked: 10,
           duration:60,
         },
         {
+          id: 2,
           name:"gezellig met vrienden 2",
           startDate: new Date(),
           jointsSmoked: 10,
@@ -148,6 +159,13 @@ export default {
     },
     overview() {
       //TODO overview
+    },
+    addSmokeSession() {
+      //TODO delete
+    },
+    detailsSmokeSession() {
+      //TODO detail Smoke session
+
     },
 
   }
