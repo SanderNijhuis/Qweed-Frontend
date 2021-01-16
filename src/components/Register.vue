@@ -35,7 +35,7 @@ export default {
         return {
             username: "",
             password: "",
-            motivation: "",
+            motivation: " ",
             errors: [],
             accepted: false
         };
