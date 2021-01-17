@@ -52,19 +52,19 @@
     <div class="list-group-item  flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{WeedPeriod.name}}</h5>
-        <small>Gram per joint: {{WeedPeriod.averageGramPerJoint}} gram</small> <small>Kosten per gram: €{{WeedPeriod.costPerGram}} </small><small>Kosten per joint: €{{WeedPeriod.costPerGram * WeedPeriod.averageGramPerJoint}} </small>
+        <small>Gram per joint: {{WeedPeriod.averageGramPerJoint}} gram</small> <small>Cost per gram: €{{WeedPeriod.costPerGram}} </small><small>Cost per joint: €{{WeedPeriod.costPerGram * WeedPeriod.averageGramPerJoint}} </small>
         <small>{{ WeedPeriod.startDate| moment('LL') }}</small>
       </div>
       <hr />
       <div v-if="WeedPeriod.isInitial">
-        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Gemiddelde joints per week:</span> <span>{{WeedPeriod.averageJointsSmoked}} joints </span> </h6>
-        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Gemiddelde kosten per week:</span><span>€ {{WeedPeriod.averageCostPerWeek}} </span> </h6>
-        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Gemiddelde tijd per week:</span><span>{{WeedPeriod.averageDuration}} minuten </span> </h6>
+        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average joints per week:</span> <span>{{WeedPeriod.averageJointsSmoked}} joints </span> </h6>
+        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average costs per week:</span><span>€ {{WeedPeriod.averageCostPerWeek}} </span> </h6>
+        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average time per week:</span><span>{{WeedPeriod.averageDuration}} minutes </span> </h6>
       </div>
       <div v-else>
-        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Totale joints:</span> <span>{{WeedPeriod.totalJoints}} joints </span> </h6>
-        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Totale kosten:</span><span>{{WeedPeriod.totalCosts}} euro </span> </h6>
-        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Totale tijd:</span><span>{{WeedPeriod.totalTime}} minuten </span> </h6>
+        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total joints:</span> <span>{{WeedPeriod.totalJoints}} joints </span> </h6>
+        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Costs:</span><span>{{WeedPeriod.totalCosts}} euro </span> </h6>
+        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Time:</span><span>{{WeedPeriod.totalTime}} minutes </span> </h6>
       </div>
       <hr />
       <div class="d-flex w-100 justify-content-between">
@@ -76,16 +76,16 @@
     <br />
     <div>
       <div class="d-flex w-100 justify-content-between">
-        <a v-on:click="overview" class="" type="submit">Terug naar overzicht</a>
-        <button v-on:click="deleteWeedPeriod" class="btn btn-danger" type="submit">Verwijderen</button>
+        <a v-on:click="overview" class="" type="submit">Back to overview</a>
+        <button v-on:click="deleteWeedPeriod" class="btn btn-danger" type="submit">Delete</button>
       </div>
     </div>
 
     <br />
     <div class="d-flex w-100 justify-content-between">
-      <h4>Wietrook sessies</h4>
+      <h4>Smoke sessions</h4>
     </div>
-    <button v-on:click="addSmokeSession(WeedPeriod.id)" class="btn btn-success" type="submit">Wietrook sessie toevoegen</button>
+    <button v-on:click="addSmokeSession(WeedPeriod.id)" class="btn btn-success" type="submit">Add Smoke session</button>
     <hr />
     <div class="container">
       <div class="list-group">
@@ -96,8 +96,8 @@
             <small>{{smokeSession.startDate| moment('LL')}}</small>
           </div>
           <hr />
-          <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Aantal joints:</span><span>{{smokeSession.jointsSmoked}} joints</span> </h6>
-          <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Tijd in minuten:</span><span> {{smokeSession.duration}} minuten</span> </h6>
+          <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Number of joints:</span><span>{{smokeSession.jointsSmoked}} joints</span> </h6>
+          <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Time in minutes:</span><span> {{smokeSession.duration}} minutes</span> </h6>
         </a>
         <br/>
         </div>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="UserPage" >
-      <h4>  Wietrook sessie: </h4>
+      <h4>  Smoke session: </h4>
 
       <div v-if="errors.length">
         <div class="alert alert-warning" v-bind:key="index" v-for="(error, index) in errors">{{error}}</div>
@@ -15,8 +15,8 @@
         <small>{{SmokeSession.startDate| moment('LL')}}</small>
       </div>
       <hr />
-      <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Aantal joints:</span><span>{{SmokeSession.jointsSmoked}} joints</span> </h6>
-      <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Tijd in minuten:</span><span> {{SmokeSession.duration}} minuten</span> </h6>
+      <h6 class="mb-1 d-flex w-75 justify-content-between"><span>number of joints:</span><span>{{SmokeSession.jointsSmoked}} joints</span> </h6>
+      <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Time in minutes:</span><span> {{SmokeSession.duration}} minutes</span> </h6>
     </div>
     <br>
       <div class="d-flex w-100 justify-content-between">
