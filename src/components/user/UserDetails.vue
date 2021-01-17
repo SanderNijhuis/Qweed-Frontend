@@ -24,32 +24,33 @@ export default {
     name:"User",
     data: function (){
         return{
-          userid:3,
+          usertoken:-1,
           User: null,
           isLoaded: true
         }
     },
     methods:{
       deleteUser() {
-        UserDataService.deleteUser(5);
+        UserDataService.deleteUser(LocalStorageService.getUser(),LocalStorageService.getUsername());
+        this.$router.push('/Login');
       },
     },
     mounted() {
 
-    LocalStorageService.getUser();
-    if (this.userid) {
-      if (this.userid !== -1) {
+    this.usertoken = LocalStorageService.getUser();
+    if (this.usertoken) {
+      if (this.usertoken !== -1) {
         UserDataService.retrieveUser(LocalStorageService.getUser(),LocalStorageService.getUsername()).then(
             (res) => {
               this.User = res.data
             })
       } else {
-        // this.$router.push('/Login'); TODO
+         this.$router.push('/Login');
       }
       this.isLoaded = true;
 
     } else {
-      //this.$router.push('/Login'); TODO
+      this.$router.push('/Login');
     }
 
 

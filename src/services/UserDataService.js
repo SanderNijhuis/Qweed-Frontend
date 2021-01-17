@@ -13,9 +13,13 @@ class UserDataService {
     }
 
     // eslint-disable-next-line
-    deleteUser(id) {
+    deleteUser(token,username) {
         //console.log('executed service')
-        return axios.delete(`${process.env.VUE_APP_USER_API_URL}api/v1/users/user/${id}`);
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+
+        };
+        return axios.delete(`${process.env.VUE_APP_USER_API_URL}api/v1/users/user/${username}`,config);
     }
 
     // eslint-disable-next-line
