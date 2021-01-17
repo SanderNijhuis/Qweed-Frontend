@@ -58,6 +58,18 @@ export default {
               console.log("md5:" + md5(this.password) )
               UserDataService.createUser(this.username, md5(this.password), this.motivation).then(() => {
                 this.$router.push('/login');
+              }).catch(err => {
+                if(err.response.status===400){
+                  this.errors.push("Username is already in use")
+                }
+                if(err.response.status===500){
+                  this.errors.push("The application experienced a problem")
+                }
+
+                // eslint-disable-next-line no-console
+                console.log(err);
+                //eslint-disable-next-line no-console
+                console.log("found an error");
               });
             }
           }
