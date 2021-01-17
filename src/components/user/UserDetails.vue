@@ -3,7 +3,7 @@
     <h1> Profiel: </h1>
 
     <label class="b-form-btn-label-control" for="name">Gebruikersnaam</label>
-    <span id="name" v-if="User">{{ User.username }}</span>
+    <span id="name" v-if="User">{{ User.userName }}</span>
     <span v-else>gebruikernaam kan momenteel niet worden opgehaald.</span>
     <br>
     <label class="b-form-btn-label-control" for="motivation">Motivatie</label>
