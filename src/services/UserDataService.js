@@ -11,7 +11,7 @@ class UserDataService {
     // eslint-disable-next-line
     deleteUser(id) {
         //console.log('executed service')
-        return axios.delete(`${process.env.VUE_APP_USER_API_URL}users/user/${id}`);
+        return axios.delete(`${process.env.VUE_APP_USER_API_URL}api/v1/users/user/${id}`);
     }
 
     // eslint-disable-next-line
@@ -29,7 +29,7 @@ class UserDataService {
     // eslint-disable-next-line
     createUser(username, password, motivation) {
         //console.log('executed service')
-        return axios.post(`${process.env.VUE_APP_USER_API_URL}users/user?username=${username}&password=${password}&motivation=${motivation}`);
+        return axios.post(`${process.env.VUE_APP_USER_API_URL}api/v1/users/user?username=${username}&password=${password}&motivation=${motivation}`);
     }
 }
 
