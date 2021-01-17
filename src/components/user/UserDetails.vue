@@ -3,12 +3,12 @@
   <h1>  Profiel: </h1>
 
   <label class="b-form-btn-label-control"  for="name">Gebruikersnaam</label>
-  <span id="name" v-if="User.username">{{User.username}}</span>
-   <span v-else>gebruikernaam kan momenteel niet worden opgehaald.</span>
-
+  <span id="name" v-if="User">{{User.username}}</span>
+  <span v-else>gebruikernaam kan momenteel niet worden opgehaald.</span>
+  <br>
   <label class="b-form-btn-label-control"  for="motivation">Motivatie</label>
-  <span id="motivation" v-if="User.motivation">{{User.motivation}}</span>
-   <span v-else>Motivatie kan momenteel niet worden opgehaald.</span>
+  <span id="motivation" v-if="User">{{User.motivation}}</span>
+  <span v-else>Motivatie kan momenteel niet worden opgehaald.</span>
   <br>
   <button v-on:click="deleteUser" class="btn btn-danger" type="submit">Delete User</button>
     </div>
@@ -27,7 +27,7 @@ export default {
         return{
           userid:-1,
           User: null,
-          isLoaded: false
+          isLoaded: true
         }
     },
     methods:{
