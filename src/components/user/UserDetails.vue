@@ -31,7 +31,7 @@ export default {
     },
     methods:{
       deleteUser() {
-        UserDataService.deleteUser(1);
+        UserDataService.deleteUser(2);
       },
     },
     mounted() {
