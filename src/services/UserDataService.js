@@ -11,7 +11,7 @@ class UserDataService {
     // eslint-disable-next-line
     deleteUser(id) {
         //console.log('executed service')
-        return axios.delete(`${process.env.VUE_APP_USER_API_URL}/user/${id}`);
+        return axios.delete(`${process.env.VUE_APP_USER_API_URL}users/user/${id}`);
     }
 
     // eslint-disable-next-line

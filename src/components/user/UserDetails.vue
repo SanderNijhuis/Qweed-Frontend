@@ -22,17 +22,16 @@ import LocalStorageService from "../../services/LocalStorageService";
 
 export default {
     name:"User",
-    userid:-1,
     data: function (){
         return{
-          userid:-1,
+          userid:3,
           User: null,
           isLoaded: true
         }
     },
     methods:{
       deleteUser() {
-        UserDataService.deleteUser(this.User.id);
+        UserDataService.deleteUser(1);
       },
     },
     mounted() {
