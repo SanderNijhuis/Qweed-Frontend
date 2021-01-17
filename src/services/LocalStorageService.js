@@ -9,24 +9,39 @@ const LocalStorageService = (function () {
         return _service
     }
     function setUser(token) {
-        localStorage.setItem('userId', token);
+        localStorage.setItem('userToken', token);
     }
 
     function getUser() {
         try {
-            return localStorage.getItem('userId');
+            return localStorage.getItem('userToken');
+        }catch (e){
+            console.log(e);
+        }
+
+    }
+    function setUsername(username) {
+        localStorage.setItem('username', username);
+    }
+
+    function getUsername() {
+        try {
+            return localStorage.getItem('username');
         }catch (e){
             console.log(e);
         }
 
     }
     function clearUser() {
-        localStorage.removeItem('userId');
+        localStorage.removeItem('userToken');
+        localStorage.removeItem('username');
     }
     return {
         getService: getService,
         setUser: setUser,
         getUser: getUser,
+        setUsername: setUsername,
+        getUsername: getUsername,
         clearUser: clearUser
     }
 })();

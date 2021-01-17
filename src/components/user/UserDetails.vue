@@ -36,20 +36,20 @@ export default {
     },
     mounted() {
 
-    this.userid = LocalStorageService.getUser();
+    LocalStorageService.getUser();
     if (this.userid) {
       if (this.userid !== -1) {
-        UserDataService.retrieveUser(this.userid).then(
+        UserDataService.retrieveUser(LocalStorageService.getUser(),LocalStorageService.getUsername()).then(
             (res) => {
               this.User = res.data
             })
       } else {
-        // this.$router.push('/Login');
+        // this.$router.push('/Login'); TODO
       }
       this.isLoaded = true;
 
     } else {
-      //this.$router.push('/Login');
+      //this.$router.push('/Login'); TODO
     }
 
 

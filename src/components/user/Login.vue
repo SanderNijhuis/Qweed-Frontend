@@ -49,22 +49,20 @@ export default {
           }
           if (this.accepted) {
             if (this.errors.length === 0) {
-                  UserDataService.login(this.User, {
-                    username: this.username,
-                    password: this.password
-                  }).then(response => { 
+                  UserDataService.login(this.username,this.password).then(response => {
                     // eslint-disable-next-line no-console
                     console.warn(response);
                     console.log("user: " + response.data)
-                    const user = response.data;
-                    LocalStorageService.setUser(user.id)
+                    const token = response.data;
+                    LocalStorageService.setUser(token)
+                    LocalStorageService.setUsername(this.username)
                     this.$router.push('/user');
                 }).catch(err => {
                   if(err.response.status===400){
-                    this.error.push("incorrecte gebruikersnaam of wachtwoord")
+                    this.errors.push("incorrect username or password")
                   }
                   if(err.response.status===500){
-                    this.errors.push("Er is een probleem opgetreden")
+                    this.errors.push("The application experienced a problem")
                   }
                 
                 // eslint-disable-next-line no-console
