@@ -9,9 +9,14 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@/assets/css/main.css'
 import VueNumericInput from 'vue-numeric-input';
+
+//import md5 from 'js-md5'
+
 import LocalStorageService from "./services/LocalStorageService";
 
 Vue.use(VueNumericInput)
+
+//Vue.use(md5)
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)

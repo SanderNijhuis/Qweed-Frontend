@@ -1,14 +1,18 @@
 <template>
-  <div id="UserPage" v-if="isLoaded">
+  <div id="UserPage" class="md-4" v-if="isLoaded">
     <h1> Profiel: </h1>
+    <div class="d-flex w-50 justify-content-between">
+      <label class="b-form-btn-label-control" for="name">Gebruikersnaam: </label>
+      <span id="name" v-if="User">{{ User.userName }}</span>
+      <span v-else>gebruikernaam kan momenteel niet worden opgehaald.</span>
+    </div>
 
-    <label class="b-form-btn-label-control" for="name">Gebruikersnaam</label>
-    <span id="name" v-if="User">{{ User.userName }}</span>
-    <span v-else>gebruikernaam kan momenteel niet worden opgehaald.</span>
     <br>
-    <label class="b-form-btn-label-control" for="motivation">Motivatie</label>
-    <span id="motivation" v-if="User">{{ User.motivation }}</span>
-    <span v-else>Motivatie kan momenteel niet worden opgehaald.</span>
+    <div class="d-flex w-50 justify-content-between">
+      <label class="b-form-btn-label-control" for="motivation">Motivatie: </label>
+      <span id="motivation" v-if="User">{{ User.motivation }}</span>
+      <span v-else>Motivatie kan momenteel niet worden opgehaald.</span>
+    </div>
     <br>
     <button v-on:click="deleteUser" class="btn btn-danger" type="submit">Delete User</button>
   </div>
@@ -54,3 +58,9 @@ export default {
 
 }
 </script>
+<style lang="css" scoped>
+.d-flex{
+  margin-left:25%
+
+}
+</style>

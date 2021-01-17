@@ -26,7 +26,7 @@
 
 <script>
 import UserDataService from "../../services/UserDataService";
-
+import md5 from 'js-md5';
 
 export default {
     name: "Register",
@@ -50,12 +50,13 @@ export default {
             this.errors.push("Username is required")
           }
           if(!this.password){
-            this.password.push("Password is required")
+            this.errors.push("Password is required")
           }
           if (this.accepted) {
             if (this.errors.length === 0) {
               //TODO check if there isn't already the same account
-              UserDataService.createUser(this.username, this.password, this.motivation).then(() => {
+              console.log("md5:" + md5(this.password) )
+              UserDataService.createUser(this.username, md5(this.password), this.motivation).then(() => {
                 this.$router.push('/login');
               });
             }

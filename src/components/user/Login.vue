@@ -24,6 +24,7 @@
 <script>
 import UserDataService from "../../services/UserDataService";
 import LocalStorageService from "../../services/LocalStorageService";
+import md5 from 'js-md5';
 
 export default {
     name: "Login",
@@ -49,7 +50,7 @@ export default {
           }
           if (this.accepted) {
             if (this.errors.length === 0) {
-                  UserDataService.login(this.username,this.password).then(response => {
+                  UserDataService.login(this.username,md5(this.password)).then(response => {
                     // eslint-disable-next-line no-console
                     console.warn(response);
                     console.log("user: " + response.data)
