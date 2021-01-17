@@ -7,7 +7,7 @@
     <b-collapse id="nav-collapse" is-nav v-if="['Register'].indexOf($route.name) && ['Login'].indexOf($route.name) && ['root'].indexOf($route.name)">
 
       <b-navbar-nav>
-        <b-nav-item href="/Overview">Overzicht</b-nav-item>
+        <b-nav-item href="/Overview">Overview</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
@@ -22,8 +22,8 @@
           <template v-slot:button-content>
             <em></em>
           </template>
-          <b-dropdown-item href="#">Mijn profiel</b-dropdown-item>
-          <b-dropdown-item href="/Logout">Uitloggen</b-dropdown-item>
+          <b-dropdown-item href="/user">My Profile</b-dropdown-item>
+          <b-dropdown-item href="/Logout">Logout</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
