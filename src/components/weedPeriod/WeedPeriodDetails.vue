@@ -90,7 +90,7 @@
     <div class="container">
       <div class="list-group">
         <div v-for="smokeSession in WeedPeriod.smokeSessions" v-bind:key="smokeSession.id">
-        <a  v-on:click="detailsSmokeSession(smokeSession.id)" class="list-group-item list-group-item-action flex-column align-items-start">{{ smokeSession.name }}
+        <a  v-on:click="detailsSmokeSession(smokeSession.id)" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{smokeSession.name}}</h5>
             <small>{{smokeSession.startDate| moment('LL')}}</small>
