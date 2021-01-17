@@ -27,9 +27,9 @@ class UserDataService {
     }
 
     // eslint-disable-next-line
-    createUser(name, user) {
+    createUser(username, password, motivation) {
         //console.log('executed service')
-        return axios.post(`${process.env.VUE_APP_USER_API_URL}/create`, user);
+        return axios.post(`${process.env.VUE_APP_USER_API_URL}users/user?username=${username}&password=${password}&motivation=${motivation}`);
     }
 }
 

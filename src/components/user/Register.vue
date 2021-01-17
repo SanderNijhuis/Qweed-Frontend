@@ -18,7 +18,7 @@
           <label for="motivation">Motivation</label>
           <input type="text" class="form-control" id="motivation" v-model="motivation">
         </fieldset>
-        <button v-on:click="accept" class="btn btn-primary" type="submit">Registreren</button>
+        <button v-on:click="accept" class="btn btn-primary" type="submit">Register</button>
       </b-form>
     </div>
   </div>
@@ -47,19 +47,15 @@ export default {
           e.preventDefault();
           this.errors = [];
           if(!this.username){
-            this.errors.push("Username is vereist")
+            this.errors.push("Username is required")
           }
           if(!this.password){
-            this.password.push("Password is vereist")
+            this.password.push("Password is required")
           }
           if (this.accepted) {
             if (this.errors.length === 0) {
               //TODO check if there isn't already the same account
-              UserDataService.createUser(this.username, {
-                username: this.username,
-                password: this.password,
-                motivation: this.motivation
-              }).then(() => {
+              UserDataService.createUser(this.username, this.password, this.motivation).then(() => {
                 this.$router.push('/login');
               });
             }
