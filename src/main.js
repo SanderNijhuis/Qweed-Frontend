@@ -9,6 +9,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@/assets/css/main.css'
 import VueNumericInput from 'vue-numeric-input';
+import LocalStorageService from "./services/LocalStorageService";
 
 Vue.use(VueNumericInput)
 
@@ -21,6 +22,21 @@ moment.locale('nl')
 Vue.use(require('vue-moment'), {
   moment
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (!LocalStorageService.getUser()) {
+      next({ name: 'Login' })
+    } else {
+      next() // go to wherever I'm going
+    }
+  } else {
+    next() // does not require auth, make sure to always call next()!
+  }
+})
+
 new Vue({
   router,
   render: h => h(App),

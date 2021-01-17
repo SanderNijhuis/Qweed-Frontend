@@ -44,13 +44,8 @@ export default {
             (res) => {
               this.User = res.data
             })
-      } else {
-         this.$router.push('/Login');
       }
       this.isLoaded = true;
-
-    } else {
-      this.$router.push('/Login');
     }
 
 

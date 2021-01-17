@@ -24,27 +24,42 @@ const router = new Router({
         {
             path: "/Logout",
             name:"Logout",
-            component: ()=> import("./components/user/Logout")
+            component: ()=> import("./components/user/Logout"),
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             path:"/user",
             name:"User",
-            component: ()=> import("./components/user/UserDetails")
+            component: ()=> import("./components/user/UserDetails"),
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             path:"/SmokeSession/:id",
             name:"SmokeSessionDetails",
-            component: ()=> import("./components/smokeSession/SmokeSessionDetails")
+            component: ()=> import("./components/smokeSession/SmokeSessionDetails"),
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             path:"/WeedPeriod/",
             name:"WeedPeriodCreate",
-            component: ()=> import("./components/weedPeriod/WeedPeriodCreate")
+            component: ()=> import("./components/weedPeriod/WeedPeriodCreate"),
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             path:"/WeedPeriod/:id",
             name:"WeedPeriodDetails",
-            component: ()=> import("./components/weedPeriod/WeedPeriodDetails")
+            component: ()=> import("./components/weedPeriod/WeedPeriodDetails"),
+            meta: {
+                requiresAuth: true
+            }
         },
     ]
 });
