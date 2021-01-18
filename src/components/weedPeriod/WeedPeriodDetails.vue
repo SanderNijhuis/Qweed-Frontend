@@ -109,6 +109,7 @@
 </template>
 
 <script>
+
 export default {
   name: "WeedPeriodDetails",
   data(){
@@ -158,7 +159,7 @@ export default {
       //TODO delete
     },
     overview() {
-      //TODO overview
+      this.$router.push('/user');
     },
     addSmokeSession() {
       //TODO delete

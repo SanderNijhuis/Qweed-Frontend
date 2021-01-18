@@ -11,7 +11,7 @@
             <div class="alert alert-warning" v-bind:key="index" v-for="(error, index) in errors">{{error}}</div>
           </div>
           <fieldset class="form-group">
-            <label class="b-form-btn-label-control"  for="name">Name</label>
+            <label class="b-form-btn-label-control col-md-12"  for="name">Name</label>
             <input type="text" class="form-control" id="name" v-model="name">
           </fieldset>
           <fieldset class="form-group">
@@ -20,32 +20,32 @@
             <label for="checkbox">{{ isInitial }}</label>
           </fieldset>
           <fieldset class="form-group">
-            <label class="b-form-btn-label-control"  for="startDate">Start date</label>
+            <label class="b-form-btn-label-control col-md-12"  for="startDate">Start date</label>
             <input type="date" class="form-control" id="startDate" v-model="startDate">
           </fieldset>
           <fieldset v-if="isInitial" class="form-group">
-            <label class="b-form-btn-label-control"  for="endDate">End date</label>
+            <label class="b-form-btn-label-control col-md-12"  for="endDate">End date</label>
             <input type="date" class="form-control" id="endDate" v-model="endDate">
           </fieldset>
           <fieldset class="form-group">
-            <label class="b-form-btn-label-control"  for="averageGramPerJoint">Average gram per joint</label>
+            <label class="b-form-btn-label-control col-md-12"  for="averageGramPerJoint">Average gram per joint</label>
             <!--<input type="number" class="form-control" id="averageGramPerJoint" v-model.number="averageGramPerJoint"> -->
-            <vue-numeric-input id="averageGramPerJoint" v-model="averageGramPerJoint" :min="0.1" :max="20" :step="0.1" size="100%" :precision="1" align="center" placeholder="0.1"></vue-numeric-input>
+            <vue-numeric id="averageGramPerJoint" v-model="averageGramPerJoint" v-bind:precision="2" separator="."></vue-numeric>
           </fieldset>
           <fieldset class="form-group">
-            <label class="b-form-btn-label-control"  for="costPerGram">Cost per gram</label>
+            <label class="b-form-btn-label-control col-md-12"  for="costPerGram">Cost per gram</label>
             <!-- <input type="number" class="form-control" id="costPerGram" v-model.number="costPerGram"> -->
-            <vue-numeric-input id="costPerGram" v-model.number="costPerGram" :min="1" :max="50" :step="0.5" size="100%" :precision="2" align="center" placeholder="1"></vue-numeric-input>
+            <vue-numeric id="costPerGram" v-model="costPerGram" currency="€" v-bind:precision="2" separator="."></vue-numeric>
           </fieldset>
           <fieldset v-if="isInitial" class="form-group">
-            <label class="b-form-btn-label-control"  for="averageJointsSmokedPerWeek">Average joints smoked per week</label>
+            <label class="b-form-btn-label-control col-md-12"  for="averageJointsSmokedPerWeek">Average joints smoked per week</label>
             <!-- <input type="number" class="form-control" id="costPerGram" v-model.number="costPerGram"> -->
-            <vue-numeric-input id="averageJointsSmokedPerWeek" v-model.number="averageJointsSmokedPerWeek" :min="1" :max="500" :step="1" size="100%" :precision="0" align="center" placeholder="1"></vue-numeric-input>
+            <vue-numeric id="averageJointsSmokedPerWeek" v-model="averageJointsSmokedPerWeek" separator="."></vue-numeric>
           </fieldset>
           <fieldset v-if="isInitial" class="form-group">
-            <label class="b-form-btn-label-control"  for="averageDurationPerWeek">Average duration per week</label>
+            <label class="b-form-btn-label-control col-md-12"  for="averageDurationPerWeek">Average time(in minutes) spend smoking per week</label>
             <!-- <input type="number" class="form-control" id="costPerGram" v-model.number="costPerGram"> -->
-            <vue-numeric-input  id="averageDurationPerWeek" v-model.number="averageDurationPerWeek" :min="1" :max="6000" :step="1" size="65%" :precision="0" align="center" placeholder="1"></vue-numeric-input><span>minutes</span>
+            <vue-numeric id="averageDurationPerWeek" v-model="averageDurationPerWeek" separator="."></vue-numeric>
           </fieldset>
           <div class="form-group">
             <button v-on:click="accept" class="btn btn-primary" type="submit">Add </button>
@@ -58,8 +58,9 @@
 </template>
 
 <script>
-//import UserDataService from "@/services/UserDataService";
-//import LocalStorageService from "@/services/LocalStorageService";
+import WeedperiodDataService from "@/services/WeedperiodDataService";
+import LocalStorageService from "@/services/LocalStorageService";
+//import WeedperiodDataService from "@/services/WeedperiodDataService";
 
 export default {
   name: "WeedPeriodCreate",
@@ -70,8 +71,8 @@ export default {
       endDate: new  Date,
       averageGramPerJoint: 0.6,
       costPerGram: 10.6,
-      averageJointsSmokedPerWeek: null,
-      averageDurationPerWeek: null,
+      averageJointsSmokedPerWeek: 1,
+      averageDurationPerWeek: 1,
       isInitial: false,
       customerName: null,
       errors: [],
@@ -90,26 +91,31 @@ export default {
       }
       if (this.accepted) {
         if (this.errors.length === 0) {
-          /*WeedPeriodDataService.Create().then(response => {
-            // eslint-disable-next-line no-console
-            //console.warn(response);
-            //console.log("user: " + response.data)
-            const user = response.data;
-            LocalStorageService.setUser(user.id)
-            this.$router.push('/user');
+          WeedperiodDataService.createWeedperiod(LocalStorageService.getUser(), {
+            name: this.name,
+            startDate: this.startDate,
+            endDate: this.endDate,
+            averageGramPerJoint: this.averageGramPerJoint,
+            costPerGram: this.costPerGram,
+            averageJointsSmokedPerWeek: this.averageJointsSmokedPerWeek,
+            averageDurationPerWeek: this.averageDurationPerWeek,
+            isInitial: this.isInitial,
+            customerName: LocalStorageService.getUsername()
+          }).then(() => {
+                this.$router.push('/user');
           }).catch(err => {
             if(err.response.status===400){
-              this.error.push("incorrecte gebruikersnaam of wachtwoord")
+              this.error.push("TODO")
             }
             if(err.response.status===500){
-              this.errors.push("Er is een probleem opgetreden")
+              this.errors.push("An error has occurred")
             }
 
             // eslint-disable-next-line no-console
             console.log(err);
             //eslint-disable-next-line no-console
             console.log("found an error");
-          });*/
+          });
 
         }
       }
