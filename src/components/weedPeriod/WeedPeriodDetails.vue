@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="UserPage" >
-      <h4> Wietrook periode</h4>
+      <h4> Weed period</h4>
 
       <div v-if="errors.length">
         <div class="alert alert-warning" v-bind:key="index" v-for="(error, index) in errors">{{error}}</div>
@@ -52,11 +52,12 @@
     <div class="list-group-item  flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{WeedPeriod.name}}</h5>
-        <small>Gram per joint: {{WeedPeriod.averageGramPerJoint}} gram</small> <small>Cost per gram: €{{WeedPeriod.costPerGram}} </small><small>Cost per joint: €{{WeedPeriod.costPerGram * WeedPeriod.averageGramPerJoint}} </small>
+        <small>Gram per joint: {{WeedPeriod.averageGramPerJoint}} gram</small> <small>Cost per gram: €{{WeedPeriod.costPerGram}} </small>
         <small>{{ WeedPeriod.startDate| moment('LL') }}</small>
       </div>
       <hr />
       <div v-if="WeedPeriod.isInitial">
+        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Cost per joint:</span> <span>€{{WeedPeriod.costPerJoint}} </span> </h6>
         <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average joints per week:</span> <span>{{WeedPeriod.averageJointsSmokedPerWeek}} joints </span> </h6>
         <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average costs per week:</span><span>€ {{WeedPeriod.averageCostPerWeek}} </span> </h6>
         <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average time per week:</span><span>{{WeedPeriod.averageDurationPerWeek}} minutes </span> </h6>
@@ -69,7 +70,7 @@
       <hr />
       <div class="d-flex w-100 justify-content-between">
         <h6 v-if="WeedPeriod.isInitial" class="mb-1"></h6>
-        <h6 v-else-if="WeedPeriod.smokeSessions" class="mb-1">Number of smoke sessions: {{WeedPeriod.smokeSessions.length}}</h6>
+        <h6 v-else-if="WeedPeriod.smokesessions" class="mb-1">Number of smoke sessions: {{WeedPeriod.smokesessions.length}}</h6>
         <small>{{ WeedPeriod.endDate | moment('LL') }}</small>
       </div>
     </div>
@@ -126,6 +127,7 @@ export default {
         endDate: new Date(),
         averageGramPerJoint: 0,
         costPerGram: 0,
+        costPerjoint: 0,
         averageJointsSmoked: 0,
         averageDuration: 0,
         averageCostPerWeek:0 ,

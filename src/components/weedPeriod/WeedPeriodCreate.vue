@@ -93,7 +93,7 @@ export default {
                 this.$router.push('/user');
           }).catch(err => {
             if(err.response.status===400){
-              this.error.push("TODO")
+              this.errors.push("Start Date has to be after the initial weedperiod end date")
             }
             if(err.response.status===500){
               this.errors.push("An error has occurred")
