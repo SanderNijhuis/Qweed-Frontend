@@ -38,6 +38,14 @@ const router = new Router({
             }
         },
         {
+            path:"/:id/SmokeSession/",
+            name:"SmokeSessionCreate",
+            component: ()=> import("./components/smokeSession/SmokeSessionCreate"),
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
             path:"/SmokeSession/:id",
             name:"SmokeSessionDetails",
             component: ()=> import("./components/smokeSession/SmokeSessionDetails"),

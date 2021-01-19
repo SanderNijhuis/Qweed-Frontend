@@ -82,28 +82,28 @@
     </div>
 
     <br />
-    <div class="d-flex w-100 justify-content-between">
-      <h4>Smoke sessions</h4>
-    </div>
-    <button v-on:click="addSmokeSession(WeedPeriod.id)" class="btn btn-success" type="submit">Add Smoke session</button>
-    <hr />
-    <div class="container">
-      <div class="list-group">
-        <div v-for="smokeSession in WeedPeriod.smokeSessions" v-bind:key="smokeSession.id">
-        <a  v-on:click="detailsSmokeSession(smokeSession.id)" class="list-group-item list-group-item-action flex-column align-items-start">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{smokeSession.name}}</h5>
-            <small>{{smokeSession.startDate| moment('LL')}}</small>
-          </div>
-          <hr />
-          <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Number of joints:</span><span>{{smokeSession.jointsSmoked}} joints</span> </h6>
-          <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Time in minutes:</span><span> {{smokeSession.duration}} minutes</span> </h6>
-        </a>
-        <br/>
-        </div>
-
+    <div v-if="WeedPeriod.isInitial === false" >
+      <div class="d-flex w-100 justify-content-between">
+        <h4>Smoke sessions</h4>
       </div>
-
+      <button v-on:click="addSmokeSession(WeedPeriod.id)" class="btn btn-success" type="submit">Add Smoke session</button>
+      <hr />
+      <div class="container">
+        <div class="list-group">
+          <div v-for="smokeSession in WeedPeriod.smokesessions" v-bind:key="smokeSession.id">
+            <a  v-on:click="detailsSmokeSession(smokeSession.id)" class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{smokeSession.name}}</h5>
+                <small>{{smokeSession.startDate| moment('LL')}}</small>
+              </div>
+              <hr />
+              <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Number of joints:</span><span>{{smokeSession.jointsSmoked}} joints</span> </h6>
+              <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Time in minutes:</span><span> {{smokeSession.duration}} minutes</span> </h6>
+            </a>
+            <br/>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -113,7 +113,7 @@
 //import UserDataService from "@/services/UserDataService";
 import LocalStorageService from "@/services/LocalStorageService";
 import WeedperiodDataService from "@/services/WeedperiodDataService";
-import SmokesessionDataService from "@/services/SmokesessionDataService";
+//import SmokesessionDataService from "@/services/SmokesessionDataService";
 
 export default {
   name: "WeedPeriodDetails",
@@ -132,13 +132,12 @@ export default {
         totalJoints:0,
         totalCosts:0,
         totalTime:0,
-        isInitial: false,
-        smokeSessions: []
+        isInitial: false
       },
       errors: [],
     }
   },
-  created: function () {
+  mounted: function () {
     WeedperiodDataService.retrieveWeedperiod(LocalStorageService.getUser(),this.$route.params.id).then(
         (res) => {
           this.WeedPeriod = res.data
@@ -157,12 +156,13 @@ export default {
   methods: {
     deleteWeedPeriod() {
       WeedperiodDataService.deleteWeedperiod(LocalStorageService.getUser(),this.$route.params.id)
+      this.$router.push('/user');
     },
     overview() {
       this.$router.push('/user');
     },
-    addSmokeSession() {
-      SmokesessionDataService.deleteSmokesession(LocalStorageService.getUser(),this.$route.params.id)
+    addSmokeSession(id) {
+      this.$router.push(`/${id}/SmokeSession`)
     },
     detailsSmokeSession(id) {
       this.$router.push(`/SmokeSession/${id}`)

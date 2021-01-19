@@ -27,22 +27,34 @@
 </template>
 
 <script>
+import LocalStorageService from "@/services/LocalStorageService";
+import SmokesessionDataService from "@/services/SmokesessionDataService";
+//import WeedperiodDataService from "@/services/WeedperiodDataService";
+
 export default {
+
 name: "SmokeSessionDetails",
   data(){
     return{
       SmokeSession: {
-        name:"gezellig met vrienden",
+        name:"",
         startDate: new Date(),
-        jointsSmoked: 10,
-        duration:120,
+        jointsSmoked: 0,
+        duration: 0,
       },
       errors: [],
     }
   },
+  mounted: function () {
+    SmokesessionDataService.retrieveSmokesession(LocalStorageService.getUser(), this.$route.params.id).then(
+        (res) => {
+          this.SmokeSession = res.data
+        })
+  },
   methods: {
     deleteSmokeSession() {
-      //TODO delete
+      SmokesessionDataService.deleteSmokesession(LocalStorageService.getUser(),this.$route.params.id)
+      this.$router.push('/user');
     },
 
   }
