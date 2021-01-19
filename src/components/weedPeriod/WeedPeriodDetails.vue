@@ -77,7 +77,7 @@
     <div>
       <div class="d-flex w-100 justify-content-between">
         <a v-on:click="overview" class="" type="submit">Back to overview</a>
-        <button v-on:click="deleteWeedPeriod" class="btn btn-danger" type="submit">Delete</button>
+        <button v-on:click="deleteWeedPeriod()" class="btn btn-danger" type="submit">Delete</button>
       </div>
     </div>
 
@@ -155,7 +155,7 @@ export default {
       },
   methods: {
     deleteWeedPeriod() {
-      //TODO delete
+      WeedperiodDataService.deleteWeedperiod(LocalStorageService.getUser(),this.$route.params.id)
     },
     overview() {
       this.$router.push('/user');

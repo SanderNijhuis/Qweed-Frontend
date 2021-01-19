@@ -23,7 +23,7 @@ Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 
 const moment = require('moment')
-moment.locale('nl')
+moment.locale('en')
 
 Vue.use(require('vue-moment'), {
   moment
