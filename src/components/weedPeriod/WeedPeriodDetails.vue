@@ -68,8 +68,8 @@
       </div>
       <hr />
       <div class="d-flex w-100 justify-content-between">
-        <h6 v-if="WeedPeriod.isInitial && WeedPeriod.smokeSessions" class="mb-1"></h6>
-        <h6 v-else class="mb-1">Number of smoke sessions: {{WeedPeriod.smokeSessions.length}}</h6>
+        <h6 v-if="WeedPeriod.isInitial" class="mb-1"></h6>
+        <h6 v-else-if="WeedPeriod.smokeSessions" class="mb-1">Number of smoke sessions: {{WeedPeriod.smokeSessions.length}}</h6>
         <small>{{ WeedPeriod.endDate | moment('LL') }}</small>
       </div>
     </div>
@@ -110,7 +110,7 @@
 
 <script>
 
-import UserDataService from "@/services/UserDataService";
+//import UserDataService from "@/services/UserDataService";
 import LocalStorageService from "@/services/LocalStorageService";
 import WeedperiodDataService from "@/services/WeedperiodDataService";
 
@@ -142,13 +142,15 @@ export default {
         (res) => {
           this.WeedPeriod = res.data
         })
-    /*
-    this.WeedPeriod.averageCostPerWeek = this.WeedPeriod.averageGramPerJoint * this.WeedPeriod.averageJointsSmoked * this.WeedPeriod.costPerGram;
-    for (var i = 0; i < this.WeedPeriod.smokeSessions.length; i++) {
-      this.WeedPeriod.totalJoints += this.WeedPeriod.smokeSessions[i].jointsSmoked;
-      this.WeedPeriod.totalTime += this.WeedPeriod.smokeSessions[i].duration;
-    }
-    this.WeedPeriod.totalCosts = this.WeedPeriod.totalJoints * this.WeedPeriod.costPerGram * this.WeedPeriod.averageGramPerJoint*/
+
+    /*this.WeedPeriod.averageCostPerWeek = this.WeedPeriod.averageGramPerJoint * this.WeedPeriod.averageJointsSmoked * this.WeedPeriod.costPerGram;
+    if (this.WeedPeriod.smokeSessions) {
+      for (var i = 0; i < this.WeedPeriod.smokeSessions.length; i++) {
+        this.WeedPeriod.totalJoints += this.WeedPeriod.smokeSessions[i].jointsSmoked;
+        this.WeedPeriod.totalTime += this.WeedPeriod.smokeSessions[i].duration;
+      }
+      this.WeedPeriod.totalCosts = this.WeedPeriod.totalJoints * this.WeedPeriod.costPerGram * this.WeedPeriod.averageGramPerJoint
+    }*/
 
       },
   methods: {
