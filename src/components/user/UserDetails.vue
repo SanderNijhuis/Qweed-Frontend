@@ -22,6 +22,12 @@
       <div class="list-group" v-if="user">
         <div v-for="weedperiod in user.weedperiods" v-bind:key="weedperiod.id">
           <a  v-on:click="detailsWeedperiod(weedperiod.id)" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div v-if="weedperiod.isInitial">
+                <small>Initial weedperiod</small>
+            </div>
+            <div v-else>
+              <small>weedperiod</small>
+            </div>
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">{{weedperiod.name}}</h5>
               <small>Gram per joint: {{weedperiod.averageGramPerJoint}} gram</small> <small>Cost per gram: €{{weedperiod.costPerGram}} </small><small>Cost per joint: €{{weedperiod.costPerGram * weedperiod.averageGramPerJoint}} </small>
@@ -93,6 +99,8 @@
              (res) => {
                this.user = res.data
                this.weedperiods = res.data.weedperiods
+
+               this.weedperiods = this.weedperiods.sort((x,y) => y.isInitial - x.isInitial)
                if(this.weedperiods) {
                  for (var i = 0; i < this.weedperiods.length; i++) {
                    console.log(i)
