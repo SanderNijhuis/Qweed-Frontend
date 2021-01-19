@@ -11,39 +11,39 @@
             <div class="alert alert-warning" v-bind:key="index" v-for="(error, index) in errors">{{ error }}</div>
           </div>
           <fieldset class="form-group">
-            <label class="b-form-btn-label-control col-md-12" for="name">Name</label>
+            <label class="b-form-btn-label-control col-md-12" for="name">Name*</label>
             <input type="text" class="form-control" id="name" v-model="name">
           </fieldset>
           <fieldset class="form-group">
-            <label class="b-form-btn-label-control col-md-12" for="startDate">Start date</label>
+            <label class="b-form-btn-label-control col-md-12" for="startDate">Start date*</label>
             <input type="date" class="form-control" id="startDate" v-model="startDate">
           </fieldset>
           <fieldset class="form-group">
-            <label class="b-form-btn-label-control col-md-12" for="endDate">End date</label>
+            <label class="b-form-btn-label-control col-md-12" for="endDate">End date*</label>
             <input type="date" class="form-control" id="endDate" v-model="endDate">
           </fieldset>
           <fieldset class="form-group">
-            <label class="b-form-btn-label-control col-md-12" for="averageGramPerJoint">Average gram per joint</label>
+            <label class="b-form-btn-label-control col-md-12" for="averageGramPerJoint">Average gram per joint*</label>
             <!--<input type="number" class="form-control" id="averageGramPerJoint" v-model.number="averageGramPerJoint"> -->
             <vue-numeric id="averageGramPerJoint" v-model="averageGramPerJoint" v-bind:precision="2"
                          separator="."></vue-numeric>
           </fieldset>
           <fieldset class="form-group">
-            <label class="b-form-btn-label-control col-md-12" for="costPerGram">Cost per gram</label>
+            <label class="b-form-btn-label-control col-md-12" for="costPerGram">Cost per gram*</label>
             <!-- <input type="number" class="form-control" id="costPerGram" v-model.number="costPerGram"> -->
             <vue-numeric id="costPerGram" v-model="costPerGram" currency="€" v-bind:precision="2"
                          separator="."></vue-numeric>
           </fieldset>
           <fieldset class="form-group">
             <label class="b-form-btn-label-control col-md-12" for="averageJointsSmokedPerWeek">Average joints smoked per
-              week</label>
+              week*</label>
             <!-- <input type="number" class="form-control" id="costPerGram" v-model.number="costPerGram"> -->
             <vue-numeric id="averageJointsSmokedPerWeek" v-model="averageJointsSmokedPerWeek"
                          separator="."></vue-numeric>
           </fieldset>
           <fieldset class="form-group">
             <label class="b-form-btn-label-control col-md-12" for="averageDurationPerWeek">Average time(in minutes)
-              spend smoking per week</label>
+              spend smoking per week*</label>
             <!-- <input type="number" class="form-control" id="costPerGram" v-model.number="costPerGram"> -->
             <vue-numeric id="averageDurationPerWeek" v-model="averageDurationPerWeek" separator="."></vue-numeric>
           </fieldset>
@@ -66,13 +66,13 @@ export default {
   name: "WeedPeriodCreate",
   data() {
     return {
-      name: "NotInitial Weedperiod",
+      name: "",
       startDate: null,
       endDate: null,
-      averageGramPerJoint: 1.0,
-      costPerGram: 10.6,
-      averageJointsSmokedPerWeek: 1,
-      averageDurationPerWeek: 1,
+      averageGramPerJoint: 0,
+      costPerGram: 0,
+      averageJointsSmokedPerWeek: 0,
+      averageDurationPerWeek: 0,
       isInitial: true,
       customerName: null,
       errors: [],
@@ -92,6 +92,18 @@ export default {
       }
       if (!this.endDate) {
         this.errors.push("End date required")
+      }
+      if (!this.averageGramPerJoint) {
+        this.errors.push("Average gram per joint required")
+      }
+      if (!this.costPerGram) {
+        this.errors.push("Cost per gram required")
+      }
+      if (!this.averageJointsSmokedPerWeek) {
+        this.errors.push("Average joint smoke per week required")
+      }
+      if (!this.averageDurationPerWeek) {
+        this.errors.push("Average time(in minutes) spend smoking per week required")
       }
       if( Date.parse(this.startDate) > Date.parse(new Date())){
         this.errors.push("Start date can't be in the future")
