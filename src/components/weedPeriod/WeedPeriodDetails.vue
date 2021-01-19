@@ -113,6 +113,7 @@
 //import UserDataService from "@/services/UserDataService";
 import LocalStorageService from "@/services/LocalStorageService";
 import WeedperiodDataService from "@/services/WeedperiodDataService";
+import SmokesessionDataService from "@/services/SmokesessionDataService";
 
 export default {
   name: "WeedPeriodDetails",
@@ -161,10 +162,10 @@ export default {
       this.$router.push('/user');
     },
     addSmokeSession() {
-      //TODO delete
+      SmokesessionDataService.deleteSmokesession(LocalStorageService.getUser(),this.$route.params.id)
     },
-    detailsSmokeSession() {
-      //TODO detail Smoke session
+    detailsSmokeSession(id) {
+      this.$router.push(`/SmokeSession/${id}`)
 
     },
 
