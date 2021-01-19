@@ -7,7 +7,7 @@
     <b-collapse id="nav-collapse" is-nav v-if="['Register'].indexOf($route.name) && ['Login'].indexOf($route.name) && ['root'].indexOf($route.name)">
 
       <b-navbar-nav>
-        <b-nav-item href="/Overview">Overview</b-nav-item>
+        <b-nav-item href="/user">Overview</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->

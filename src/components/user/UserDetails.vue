@@ -16,7 +16,11 @@
        </div>
     </div>
     <br>
-    <button v-on:click="deleteUser" class="btn btn-danger" type="submit">Delete User</button>
+    <div class="d-flex w-100 justify-content-between">
+      <button v-if="hasInitial === false" v-on:click="addWeedperiodInitial" class="btn btn-primary" type="submit">Add initial weedperiod</button>
+      <button v-else v-on:click="addWeedperiod" class="btn btn-primary" type="submit">Add weedperiod</button>
+      <button v-on:click="deleteUser" class="btn btn-danger" type="submit">Delete User</button>
+    </div>
     <hr>
     <div class="container">
       <div class="list-group" v-if="user">
@@ -73,7 +77,8 @@
            usertoken:-1,
            user:null,
            weedperiods: null,
-           isLoaded: true
+           isLoaded: true,
+           hasInitial:false
          }
      },
      methods:{
@@ -102,7 +107,11 @@
              (res) => {
                this.user = res.data
                this.weedperiods = res.data.weedperiods
-  
+               for (var k = 0; k < this.weedperiods.length; k++) {
+                 if (this.weedperiods[k].isInitial) {
+                    this.hasInitial = true
+                 }
+               }
                this.weedperiods = this.weedperiods.sort((x,y) => y.isInitial - x.isInitial)
                if(this.weedperiods) {
                  for (var i = 0; i < this.weedperiods.length; i++) {

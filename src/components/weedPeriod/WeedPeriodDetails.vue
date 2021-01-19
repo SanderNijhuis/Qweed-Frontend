@@ -68,8 +68,8 @@
       </div>
       <hr />
       <div class="d-flex w-100 justify-content-between">
-        <h6 v-if="WeedPeriod.isInitial && WeedPeriod.smokeSessions" class="mb-1"></h6>
-        <h6 v-else class="mb-1">Number of smoke sessions: {{WeedPeriod.smokeSessions.length}}</h6>
+        <h6 v-if="WeedPeriod.isInitial" class="mb-1"></h6>
+        <h6 v-else-if="WeedPeriod.smokeSessions" class="mb-1">Number of smoke sessions: {{WeedPeriod.smokeSessions.length}}</h6>
         <small>{{ WeedPeriod.endDate | moment('LL') }}</small>
       </div>
     </div>
@@ -110,6 +110,10 @@
 
 <script>
 
+//import UserDataService from "@/services/UserDataService";
+import LocalStorageService from "@/services/LocalStorageService";
+import WeedperiodDataService from "@/services/WeedperiodDataService";
+
 export default {
   name: "WeedPeriodDetails",
   data(){
@@ -119,40 +123,35 @@ export default {
         name:"basic weed periode",
         startDate: new Date(),
         endDate: new Date(),
-        averageGramPerJoint: 0.5,
-        costPerGram: 10,
-        averageJointsSmoked: 10,
-        averageDuration: 120,
+        averageGramPerJoint: 0,
+        costPerGram: 0,
+        averageJointsSmoked: 0,
+        averageDuration: 0,
         averageCostPerWeek:0 ,
         totalJoints:0,
         totalCosts:0,
         totalTime:0,
         isInitial: false,
-        smokeSessions: [{
-          id:1,
-          name:"gezellig met vrienden",
-          startDate: new Date(),
-          jointsSmoked: 10,
-          duration:60,
-        },
-        {
-          id: 2,
-          name:"gezellig met vrienden 2",
-          startDate: new Date(),
-          jointsSmoked: 10,
-          duration:80,
-        }]
+        smokeSessions: []
       },
       errors: [],
     }
   },
   created: function () {
-    this.WeedPeriod.averageCostPerWeek = this.WeedPeriod.averageGramPerJoint * this.WeedPeriod.averageJointsSmoked * this.WeedPeriod.costPerGram;
-    for (var i = 0; i < this.WeedPeriod.smokeSessions.length; i++) {
-      this.WeedPeriod.totalJoints += this.WeedPeriod.smokeSessions[i].jointsSmoked;
-      this.WeedPeriod.totalTime += this.WeedPeriod.smokeSessions[i].duration;
-    }
-    this.WeedPeriod.totalCosts = this.WeedPeriod.totalJoints * this.WeedPeriod.costPerGram * this.WeedPeriod.averageGramPerJoint
+    WeedperiodDataService.retrieveWeedperiod(LocalStorageService.getUser(),this.$route.params.id).then(
+        (res) => {
+          this.WeedPeriod = res.data
+        })
+
+    /*this.WeedPeriod.averageCostPerWeek = this.WeedPeriod.averageGramPerJoint * this.WeedPeriod.averageJointsSmoked * this.WeedPeriod.costPerGram;
+    if (this.WeedPeriod.smokeSessions) {
+      for (var i = 0; i < this.WeedPeriod.smokeSessions.length; i++) {
+        this.WeedPeriod.totalJoints += this.WeedPeriod.smokeSessions[i].jointsSmoked;
+        this.WeedPeriod.totalTime += this.WeedPeriod.smokeSessions[i].duration;
+      }
+      this.WeedPeriod.totalCosts = this.WeedPeriod.totalJoints * this.WeedPeriod.costPerGram * this.WeedPeriod.averageGramPerJoint
+    }*/
+
       },
   methods: {
     deleteWeedPeriod() {
