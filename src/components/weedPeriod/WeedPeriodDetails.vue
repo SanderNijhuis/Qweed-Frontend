@@ -52,19 +52,20 @@
     <div class="list-group-item  flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{WeedPeriod.name}}</h5>
-        <small>Gram per joint: {{WeedPeriod.averageGramPerJoint}} gram</small> <small>Cost per gram: €{{WeedPeriod.costPerGram}} </small>
+        <small>Gram per joint: {{WeedPeriod.averageGramPerJoint}} gram</small> <small>Cost per gram: € {{WeedPeriod.costPerGram}} </small>
         <small>{{ WeedPeriod.startDate| moment('LL') }}</small>
       </div>
       <hr />
       <div v-if="WeedPeriod.isInitial">
-        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Cost per joint:</span> <span>€{{WeedPeriod.costPerJoint}} </span> </h6>
-        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average joints per week:</span> <span>{{WeedPeriod.averageJointsSmokedPerWeek}} joints </span> </h6>
+        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Cost per joint:</span> <span>€ {{WeedPeriod.costPerJoint}} </span> </h6>
         <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average costs per week:</span><span>€ {{WeedPeriod.averageCostPerWeek}} </span> </h6>
+        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average joints per week:</span> <span>{{WeedPeriod.averageJointsSmokedPerWeek}} joints </span> </h6>
         <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average time per week:</span><span>{{WeedPeriod.averageDurationPerWeek}} minutes </span> </h6>
       </div>
       <div v-else>
+        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Cost per joint:</span> <span>€ {{WeedPeriod.costPerJoint}} </span> </h6>
+        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Costs:</span><span>€ {{WeedPeriod.totalCosts}} euro </span> </h6>
         <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total joints:</span> <span>{{WeedPeriod.totalJoints}} joints </span> </h6>
-        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Costs:</span><span>{{WeedPeriod.totalCosts}} euro </span> </h6>
         <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Time:</span><span>{{WeedPeriod.totalTime}} minutes </span> </h6>
       </div>
       <hr />

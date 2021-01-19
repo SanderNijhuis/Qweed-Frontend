@@ -34,28 +34,30 @@
             </div>
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">{{weedperiod.name}}</h5>
-              <small>Gram per joint: {{weedperiod.averageGramPerJoint}} gram</small> <small>Cost per gram: €{{weedperiod.costPerGram}} </small><small>Cost per joint: €{{weedperiod.costPerGram * weedperiod.averageGramPerJoint}} </small>
+              <small>Gram per joint: {{weedperiod.averageGramPerJoint}} gram</small> <small>Cost per gram: €{{weedperiod.costPerGram}} </small>
               <small>{{ weedperiod.startDate| moment('LL') }}</small>
             </div>
             <hr />
             <div v-if="weedperiod.isInitial">
-              <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average joints per week:</span> <span>{{weedperiod.averageJointsSmokedPerWeek}} joints </span> </h6>
+              <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Cost per joint:</span> <span>€{{weedperiod.costPerJoint}} </span> </h6>
               <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average costs per week:</span><span>€ {{weedperiod.averageCostPerWeek}} </span> </h6>
+              <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average joints per week:</span> <span>{{weedperiod.averageJointsSmokedPerWeek}} joints </span> </h6>
               <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average time per week:</span><span>{{weedperiod.averageDurationPerWeek}} minutes </span> </h6>
             </div>
             <div v-else>
+              <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Cost per joint:</span> <span>€ {{weedperiod.costPerJoint}} </span> </h6>
+              <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Costs:</span><span>€ {{weedperiod.totalCosts}} euro </span> </h6>
               <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total joints:</span> <span>{{weedperiod.totalJoints}} joints </span> </h6>
-              <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Costs:</span><span>{{weedperiod.totalCosts}} euro </span> </h6>
               <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Time:</span><span>{{weedperiod.totalTime}} minutes </span> </h6>
             </div>
             <hr />
             <div class="d-flex w-100 justify-content-between">
               <h6 v-if="weedperiod.isInitial" class="mb-1"></h6>
               <div v-else class="d-flex w-100 justify-content-between">
-                <h6  v-if="weedperiod.smokeSessions" class="mb-1">Number of smoke sessions: {{weedperiod.smokeSessions.length}}</h6>
+                <h6  v-if="weedperiod.smokesessions" class="mb-1">Number of smoke sessions: {{weedperiod.smokesessions.length}}</h6>
                 <span v-else class="md-1"> </span>
               </div>
-              <small v-if="weedperiod.isInitial">{{ weedperiod.endDate | moment('LL') }}</small>
+              <small>{{ weedperiod.endDate | moment('LL') }}</small>
             </div>
           </a>
           <br/>
