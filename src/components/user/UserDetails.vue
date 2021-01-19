@@ -54,8 +54,8 @@
               <div v-else class="d-flex w-100 justify-content-between">
                 <h6  v-if="weedperiod.smokeSessions" class="mb-1">Number of smoke sessions: {{weedperiod.smokeSessions.length}}</h6>
                 <span v-else class="md-1"> </span>
-                <small>{{ weedperiod.endDate | moment('LL') }}</small>
               </div>
+              <small v-if="weedperiod.isInitial">{{ weedperiod.endDate | moment('LL') }}</small>
             </div>
           </a>
           <br/>
@@ -98,7 +98,7 @@
        },
      },
 
-     mounted() {
+     created() {
 
      this.usertoken = LocalStorageService.getUser();
      if (this.usertoken) {
@@ -113,7 +113,7 @@
                  }
                }
                this.weedperiods = this.weedperiods.sort((x,y) => y.isInitial - x.isInitial)
-               if(this.weedperiods) {
+               /*if(this.weedperiods) {
                  for (var i = 0; i < this.weedperiods.length; i++) {
                    console.log(i)
                    if (this.weedperiods[i].isInitial) {
@@ -129,7 +129,7 @@
                      }
                    }
                  }
-               }
+               }*/
              })
        }
        this.isLoaded = true;

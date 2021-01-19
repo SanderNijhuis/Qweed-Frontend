@@ -70,6 +70,7 @@ export default {
       if(!this.startDate ){
         this.errors.push("start date required")
       }
+
       if (this.accepted) {
         if (this.errors.length === 0) {
           WeedperiodDataService.createWeedperiod(LocalStorageService.getUser(), {

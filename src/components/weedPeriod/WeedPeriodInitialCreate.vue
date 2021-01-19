@@ -85,11 +85,24 @@ export default {
       e.preventDefault();
       this.errors = [];
       if (!this.name) {
-        this.errors.push("name required")
+        this.errors.push("Name required")
       }
       if (!this.startDate) {
-        this.errors.push("start date required")
+        this.errors.push("Start date required")
       }
+      if (!this.endDate) {
+        this.errors.push("End date required")
+      }
+      if( Date.parse(this.startDate) > Date.parse(new Date())){
+        this.errors.push("Start date can't be in the future")
+      }
+      if( Date.parse(this.endDate) > Date.parse(new Date())){
+        this.errors.push("End date can't be in the future")
+      }
+      if( Date.parse(this.endDate) < Date.parse(this.startDate)){
+        this.errors.push("Start date can't be later than your end date")
+      }
+
       if (this.accepted) {
         if (this.errors.length === 0) {
           this.weedperiod = {
