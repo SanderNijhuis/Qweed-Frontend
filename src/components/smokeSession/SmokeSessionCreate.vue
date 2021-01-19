@@ -47,9 +47,9 @@ export default {
   name: "SmokeSessionCreate",
   data() {
     return {
-      name: "Smoke session",
-      startDate: new Date(),
-      endDate: new  Date,
+      weedperiodID:null,
+      name: "",
+      startDate: null,
       jointsSmoked: 0,
       duration: 0,
       customerName: null,
@@ -67,16 +67,24 @@ export default {
       if(!this.startDate ){
         this.errors.push("start date required")
       }
+      if(!this.jointsSmoked ){
+        this.errors.push("Joints smoked required")
+      }
+      if(!this.duration ){
+        this.errors.push("Duration required")
+      }
       if (this.accepted) {
+        this.weedperiodID = this.$route.params.id
         if (this.errors.length === 0) {
+          this.weedperiodID =
           SmokesessionDataService.createSmokesession(LocalStorageService.getUser(), {
             name: this.name,
             startDate: this.startDate,
             jointsSmoked: this.jointsSmoked,
             duration: this.duration,
-            weedperiodID: this.WeedPeriod.id
+            weedperiodID: this.weedperiodID
           }).then(() => {
-              this.$router.push(`/WeedPeriod/${this.WeedPeriod.id}`)
+              this.$router.push(`/WeedPeriod/${this.$route.params.id}`)
           }).catch(err => {
             if(err.response.status===400){
               this.error.push("TODO")

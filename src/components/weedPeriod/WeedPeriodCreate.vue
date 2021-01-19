@@ -47,11 +47,11 @@ export default {
   name: "WeedPeriodCreate",
   data() {
     return {
-      name: "NotInitial Weedperiod",
-      startDate: new Date(),
+      name: "",
+      startDate: null,
       endDate: new  Date,
-      averageGramPerJoint: 0.6,
-      costPerGram: 10.6,
+      averageGramPerJoint: 0,
+      costPerGram: 0,
       averageJointsSmokedPerWeek: 1,
       averageDurationPerWeek: 1,
       isInitial: false,
@@ -64,11 +64,20 @@ export default {
     validateAndSubmit(e) {
       e.preventDefault();
       this.errors = [];
-      if(!this.name){
-        this.errors.push("name required")
+      if (!this.name) {
+        this.errors.push("Name required")
       }
-      if(!this.startDate ){
-        this.errors.push("start date required")
+      if (!this.startDate) {
+        this.errors.push("Start date required")
+      }
+      if (!this.costPerGram) {
+        this.errors.push("Cost per gram required")
+      }
+      if (!this.averageGramPerJoint) {
+        this.errors.push("Average gram per joint required")
+      }
+      if( Date.parse(this.startDate) > Date.parse(new Date())){
+        this.errors.push("Start date can't be in the future")
       }
 
       if (this.accepted) {
