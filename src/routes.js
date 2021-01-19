@@ -54,6 +54,14 @@ const router = new Router({
             }
         },
         {
+            path:"/WeedPeriodInitial/",
+            name:"WeedPeriodInitialCreate",
+            component: ()=> import("./components/weedPeriod/WeedPeriodInitialCreate"),
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
             path:"/WeedPeriod/:id",
             name:"WeedPeriodDetails",
             component: ()=> import("./components/weedPeriod/WeedPeriodDetails"),

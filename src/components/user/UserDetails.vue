@@ -82,10 +82,13 @@
          this.$router.push('/Login');
        },
        addWeedperiod() {
-         //TODO delete
+         this.$router.push(`/WeedPeriod`)
        },
-       detailsWeedperiod() {
-         //TODO detail Smoke session
+       addWeedperiodInitial() {
+         this.$router.push(`/WeedPeriodInitial`)
+       },
+       detailsWeedperiod(id) {
+         this.$router.push(`/WeedPeriod/${id}`)
 
        },
      },
@@ -99,7 +102,7 @@
              (res) => {
                this.user = res.data
                this.weedperiods = res.data.weedperiods
-
+  
                this.weedperiods = this.weedperiods.sort((x,y) => y.isInitial - x.isInitial)
                if(this.weedperiods) {
                  for (var i = 0; i < this.weedperiods.length; i++) {
