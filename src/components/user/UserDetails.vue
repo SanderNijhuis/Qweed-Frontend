@@ -35,9 +35,9 @@
             </div>
             <hr />
             <div v-if="weedperiod.isInitial">
-              <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average joints per week:</span> <span>{{weedperiod.averageJointsSmoked}} joints </span> </h6>
+              <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average joints per week:</span> <span>{{weedperiod.averageJointsSmokedPerWeek}} joints </span> </h6>
               <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average costs per week:</span><span>€ {{weedperiod.averageCostPerWeek}} </span> </h6>
-              <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average time per week:</span><span>{{weedperiod.averageDuration}} minutes </span> </h6>
+              <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average time per week:</span><span>{{weedperiod.averageDurationPerWeek}} minutes </span> </h6>
             </div>
             <div v-else>
               <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total joints:</span> <span>{{weedperiod.totalJoints}} joints </span> </h6>
@@ -105,7 +105,7 @@
                  for (var i = 0; i < this.weedperiods.length; i++) {
                    console.log(i)
                    if (this.weedperiods[i].isInitial) {
-                     this.weedperiods[i].averageCostPerWeek = this.weedperiods[i].averageGramPerJoint * this.weedperiods[i].averageJointsSmoked * this.weedperiods[i].costPerGram;
+                     this.weedperiods[i].averageCostPerWeek = this.weedperiods[i].averageGramPerJoint * this.weedperiods[i].averageJointsSmokedPerWeek * this.weedperiods[i].costPerGram;
                    } else {
                      if(this.weedperiods[i].smokeSessions) {
                        for (var j = 0; i < this.weedperiods[i].smokeSessions.length; j++) {
