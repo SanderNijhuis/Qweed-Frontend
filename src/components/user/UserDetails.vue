@@ -46,7 +46,7 @@
             </div>
             <div v-else>
               <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Cost per joint:</span> <span>€ {{weedperiod.costPerJoint}} </span> </h6>
-              <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Costs:</span><span>€ {{weedperiod.totalCosts}} euro </span> </h6>
+              <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Costs:</span><span>€ {{weedperiod.totalCosts}} </span> </h6>
               <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total joints:</span> <span>{{weedperiod.totalJoints}} joints </span> </h6>
               <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Time:</span><span>{{weedperiod.totalTime}} minutes </span> </h6>
             </div>
@@ -115,23 +115,6 @@
                  }
                }
                this.weedperiods = this.weedperiods.sort((x,y) => y.isInitial - x.isInitial)
-               /*if(this.weedperiods) {
-                 for (var i = 0; i < this.weedperiods.length; i++) {
-                   console.log(i)
-                   if (this.weedperiods[i].isInitial) {
-                     this.weedperiods[i].averageCostPerWeek = this.weedperiods[i].averageGramPerJoint * this.weedperiods[i].averageJointsSmokedPerWeek * this.weedperiods[i].costPerGram;
-                   } else {
-                     if(this.weedperiods[i].smokeSessions) {
-                       for (var j = 0; i < this.weedperiods[i].smokeSessions.length; j++) {
-                         console.log(j)
-                         this.weedperiods[i].totalJoints += this.weedperiods[i].smokeSessions[j].jointsSmoked;
-                         this.weedperiods[i].totalTime += this.weedperiods[i].smokeSessions[j].duration;
-                       }
-                       this.weedperiods[i].totalCosts = this.weedperiods[i].totalJoints * this.weedperiods[i].costPerGram * this.weedperiods[i].averageGramPerJoint
-                     }
-                   }
-                 }
-               }*/
              })
        }
        this.isLoaded = true;

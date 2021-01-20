@@ -64,7 +64,7 @@
       </div>
       <div v-else>
         <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Cost per joint:</span> <span>€ {{WeedPeriod.costPerJoint}} </span> </h6>
-        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Costs:</span><span>€ {{WeedPeriod.totalCosts}} euro </span> </h6>
+        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Costs:</span><span>€ {{WeedPeriod.totalCosts}} </span> </h6>
         <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total joints:</span> <span>{{WeedPeriod.totalJoints}} joints </span> </h6>
         <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Time:</span><span>{{WeedPeriod.totalTime}} minutes </span> </h6>
       </div>
@@ -145,16 +145,6 @@ export default {
         (res) => {
           this.WeedPeriod = res.data
         })
-
-    /*this.WeedPeriod.averageCostPerWeek = this.WeedPeriod.averageGramPerJoint * this.WeedPeriod.averageJointsSmoked * this.WeedPeriod.costPerGram;
-    if (this.WeedPeriod.smokeSessions) {
-      for (var i = 0; i < this.WeedPeriod.smokeSessions.length; i++) {
-        this.WeedPeriod.totalJoints += this.WeedPeriod.smokeSessions[i].jointsSmoked;
-        this.WeedPeriod.totalTime += this.WeedPeriod.smokeSessions[i].duration;
-      }
-      this.WeedPeriod.totalCosts = this.WeedPeriod.totalJoints * this.WeedPeriod.costPerGram * this.WeedPeriod.averageGramPerJoint
-    }*/
-
       },
   methods: {
     deleteWeedPeriod() {
