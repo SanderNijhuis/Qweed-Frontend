@@ -67,6 +67,10 @@
         <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Costs:</span><span>€ {{WeedPeriod.totalCosts}} </span> </h6>
         <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total joints:</span> <span>{{WeedPeriod.totalJoints}} joints </span> </h6>
         <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Total Time:</span><span>{{WeedPeriod.totalTime}} minutes </span> </h6>
+        <hr>
+        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average cost saved per week</span><span>€ {{WeedPeriod.averageCostSavedPerWeek}} </span> </h6>
+        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average joints saved per week:</span> <span>{{WeedPeriod.averageJointsSavedPerWeek}} joints </span> </h6>
+        <h6 class="mb-1 d-flex w-75 justify-content-between"><span>Average time saved per week:</span><span>{{WeedPeriod.averageTimeSavedPerWeek}} minutes </span> </h6>
       </div>
       <hr />
       <div class="d-flex w-100 justify-content-between">
