@@ -53,8 +53,11 @@ name: "SmokeSessionDetails",
   },
   methods: {
     deleteSmokeSession() {
-      SmokesessionDataService.deleteSmokesession(LocalStorageService.getUser(),this.$route.params.id)
-      this.$router.push('/user');
+      if(confirm('are you sure?'))
+      {
+        SmokesessionDataService.deleteSmokesession(LocalStorageService.getUser(),this.$route.params.id)
+        this.$router.push('/user');
+      }
     },
 
   }

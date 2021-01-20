@@ -73,6 +73,9 @@ export default {
       if(!this.duration ){
         this.errors.push("Duration required")
       }
+      if( Date.parse(this.startDate) > Date.parse(new Date())){
+        this.errors.push("Start date can't be in the future")
+      }
       if (this.accepted) {
         this.weedperiodID = this.$route.params.id
         if (this.errors.length === 0) {
@@ -87,7 +90,7 @@ export default {
               this.$router.push(`/WeedPeriod/${this.$route.params.id}`)
           }).catch(err => {
             if(err.response.status===400){
-              this.error.push("TODO")
+              this.errors.push("TODO")
             }
             if(err.response.status===500){
               this.errors.push("An error has occurred")
