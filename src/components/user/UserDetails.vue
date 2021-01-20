@@ -89,8 +89,10 @@
      },
      methods:{
        deleteUser() {
-         UserDataService.deleteUser(LocalStorageService.getUser(),LocalStorageService.getUsername());
-         this.$router.push('/Login');
+         if(confirm('are you sure?')) {
+           UserDataService.deleteUser(LocalStorageService.getUser(), LocalStorageService.getUsername());
+           this.$router.push('/Login');
+         }
        },
        addWeedperiod() {
          this.$router.push(`/WeedPeriod`)

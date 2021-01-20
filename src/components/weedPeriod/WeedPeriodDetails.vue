@@ -152,8 +152,10 @@ export default {
       },
   methods: {
     deleteWeedPeriod() {
-      WeedperiodDataService.deleteWeedperiod(LocalStorageService.getUser(),this.$route.params.id)
-      this.$router.push('/user');
+      if(confirm('are you sure?')) {
+        WeedperiodDataService.deleteWeedperiod(LocalStorageService.getUser(), this.$route.params.id)
+        this.$router.push('/user');
+      }
     },
     overview() {
       this.$router.push('/user');
